@@ -14,12 +14,11 @@
   <div class="page">
     <header class="header">
       <div class="logo"></div>
-      <div class="header__line"></div>
     </header>
     <main class="content">
       <section class="profile">
         <div class="profile__items">
-          <img class="avatar" src="./images/profile-photo.jpg" alt="Фотография профиля">
+          <img class="profile__pic" src="./images/profile-photo.jpg" alt="Фотография профиля">
           <div class="profile__info">
             <h1 class="profile__name">Жак-Ив Кусто</h1>
             <p class="profile__about">Исследователь океана</p>
@@ -31,50 +30,65 @@
       <section class="elements">
         <ul class="elements__items">
           <li class="elements__item">
-            <img class="elements__img" src="./images/karachaevsk.jpg" alt="Старинное здание">
-            <div class="elements__group">
-              <h2 class="elements__name">Карачаевск</h2>
-              <button type="button" class="elements__icon" name="like"></button>
-            </div>
+            <article class="elements__card">
+              <img class="elements__img" src="./images/karachaevsk.jpg" alt="Старинное здание">
+              <div class="elements__group">
+                <h2 class="elements__name">Карачаевск</h2>
+                <button type="button" class="elements__icon" name="like"></button>
+              </div>
+            </article>
           </li>
           <li class="elements__item">
-            <img class="elements__img" src="./images/elbrus.jpg" alt="Эльбрус">
-            <div class="elements__group">
-              <h2 class="elements__name">Гора Эльбрус</h2>
-              <button type="button" class="elements__icon" name="like"></button>
-            </div>
+            <article class="elements__card">
+              <img class="elements__img" src="./images/elbrus.jpg" alt="Эльбрус">
+              <div class="elements__group">
+                <h2 class="elements__name">Гора Эльбрус</h2>
+                <button type="button" class="elements__icon" name="like"></button>
+              </div>
+            </article>
           </li>
           <li class="elements__item">
-            <img class="elements__img" src="./images/dombai.jpg" alt="Горы Домбая">
-            <div class="elements__group">
-              <h2 class="elements__name">Домбай</h2>
-              <button type="button" class="elements__icon" name="like"></button>
-            </div>
+            <article class="elements__card">
+              <img class="elements__img" src="./images/dombai.jpg" alt="Горы Домбая">
+              <div class="elements__group">
+                <h2 class="elements__name">Домбай</h2>
+                <button type="button" class="elements__icon" name="like"></button>
+              </div>
+            </article>
           </li>
           <li class="elements__item">
-            <img class="elements__img" src="./images/elbrus.jpg" alt="Эльбрус">
-            <div class="elements__group">
-              <h2 class="elements__name">Гора Эльбрус</h2>
-              <button type="button" class="elements__icon" name="like"></button>
-            </div>
+            <article class="elements__card">
+              <img class="elements__img" src="./images/elbrus.jpg" alt="Эльбрус">
+              <div class="elements__group">
+                <h2 class="elements__name">Гора Эльбрус</h2>
+                <button type="button" class="elements__icon" name="like"></button>
+              </div>
+            </article>
           </li>
           <li class="elements__item">
-            <img class="elements__img" src="./images/dombai.jpg" alt="Горы Домбая">
-            <div class="elements__group">
-              <h2 class="elements__name">Домбай</h2>
-              <button type="button" class="elements__icon" name="like"></button>
-            </div>
+            <article class="elements__card">
+              <img class="elements__img" src="./images/dombai.jpg" alt="Горы Домбая">
+              <div class="elements__group">
+                <h2 class="elements__name">Домбай</h2>
+                <button type="button" class="elements__icon" name="like"></button>
+              </div>
+            </article>
           </li>
           <li class="elements__item">
-            <img class="elements__img" src="./images/karachaevsk.jpg" alt="Старинное здание">
-            <div class="elements__group">
-              <h2 class="elements__name">Карачаево-Черкессия</h2>
-              <button type="button" class="elements__icon" name="like"></button>
-            </div>
+            <article class="elements__card">
+              <img class="elements__img" src="./images/karachaevsk.jpg" alt="Старинное здание">
+              <div class="elements__group">
+                <h2 class="elements__name">Карачаево-Черкессия</h2>
+                <button type="button" class="elements__icon" name="like"></button>
+              </div>
+            </article>
           </li>
         </ul>
       </section>
     </main>
+    <footer class="footer">
+      <p class="footer__author">&#169; 2020 Mesto Russia</p>
+    </footer>
     <div class="popup">
       <div class="popup__container">
         <button class="popup__button-close" type="button"></button>
@@ -82,13 +96,10 @@
         <form class="popup__form" name="form">
           <input class="popup__input popup__input_el_name" type="text" name="full-name" value="" required>
           <input class="popup__input popup__input_el_descr" type="text" name="description" value="">
-          <input class="popup__button-save" type="submit" name="save" value="Сохранить">
+          <button class="popup__button-save" type="submit" name="save">Сохранить</button>>
         </form>
       </div>
     </div>
-    <footer class="footer">
-      <p class="footer__author">&#169; 2020 Mesto Russia</p>
-    </footer>
   </div>
   <script src="./scripts/index.js"></script> 
 </body>
