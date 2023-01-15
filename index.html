@@ -28,79 +28,55 @@
         <button class="profile__add-button" type="button"></button>
       </section>
       <section class="elements">
-        <ul class="elements__items">
-          <li class="elements__item">
-            <article class="elements__card">
-              <img class="elements__img" src="./images/karachaevsk.jpg" alt="Старинное здание">
-              <div class="elements__group">
-                <h2 class="elements__name">Карачаевск</h2>
-                <button type="button" class="elements__icon" name="like"></button>
-              </div>
-            </article>
-          </li>
-          <li class="elements__item">
-            <article class="elements__card">
-              <img class="elements__img" src="./images/elbrus.jpg" alt="Эльбрус">
-              <div class="elements__group">
-                <h2 class="elements__name">Гора Эльбрус</h2>
-                <button type="button" class="elements__icon" name="like"></button>
-              </div>
-            </article>
-          </li>
-          <li class="elements__item">
-            <article class="elements__card">
-              <img class="elements__img" src="./images/dombai.jpg" alt="Горы Домбая">
-              <div class="elements__group">
-                <h2 class="elements__name">Домбай</h2>
-                <button type="button" class="elements__icon" name="like"></button>
-              </div>
-            </article>
-          </li>
-          <li class="elements__item">
-            <article class="elements__card">
-              <img class="elements__img" src="./images/elbrus.jpg" alt="Эльбрус">
-              <div class="elements__group">
-                <h2 class="elements__name">Гора Эльбрус</h2>
-                <button type="button" class="elements__icon" name="like"></button>
-              </div>
-            </article>
-          </li>
-          <li class="elements__item">
-            <article class="elements__card">
-              <img class="elements__img" src="./images/dombai.jpg" alt="Горы Домбая">
-              <div class="elements__group">
-                <h2 class="elements__name">Домбай</h2>
-                <button type="button" class="elements__icon" name="like"></button>
-              </div>
-            </article>
-          </li>
-          <li class="elements__item">
-            <article class="elements__card">
-              <img class="elements__img" src="./images/karachaevsk.jpg" alt="Старинное здание">
-              <div class="elements__group">
-                <h2 class="elements__name">Карачаево-Черкессия</h2>
-                <button type="button" class="elements__icon" name="like"></button>
-              </div>
-            </article>
-          </li>
-        </ul>
+        <ul class="elements__items"></ul>
       </section>
     </main>
     <footer class="footer">
       <p class="footer__author">&#169; 2020 Mesto Russia</p>
     </footer>
-    <div class="popup">
+    <div class="popup popup_edit-profle">
       <div class="popup__container">
         <button class="popup__button-close" type="button"></button>
         <h3 class="popup__title">Редактировать профиль</h3>
         <form class="popup__form" name="form">
-          <input class="popup__input popup__input_el_name" type="text" name="full-name" value="" required>
-          <input class="popup__input popup__input_el_descr" type="text" name="description" value="">
+          <input class="popup__input popup__input_el_name" type="text" name="full-name" value="" placeholder="Введите имя" required>
+          <input class="popup__input popup__input_el_descr" type="text" name="description" value="" placeholder="ВВедите профессию" required>
           <button class="popup__button-save" type="submit" name="save">Сохранить</button>>
         </form>
       </div>
     </div>
+    <div class="popup popup_add-card">
+      <div class="popup__container">
+        <button class="popup__button-close" type="button"></button>
+        <h3 class="popup__title">Новое место</h3>
+        <form class="popup__form" name="form">
+          <input class="popup__input popup__input_el_name" type="text" name="full-name" value="" placeholder="Название" required>
+          <input class="popup__input popup__input_el_descr" type="url" name="url" value="" placeholder="Ссылка на картинку" required>
+          <button class="popup__button-save" type="submit" name="save">Создать</button>>
+        </form>
+      </div>
+    </div>
+    <div class="popup popup_open-pic">
+        <figure class="popup__figure">
+          <button class="popup__button-close" type="button"></button>
+          <img class="popup__image" src="" alt="">
+          <figcaption class="popup__image-descr"></figcaption>
+        </figure>
+    </div>
   </div>
+  <template class="card-template">
+    <li class="elements__item">
+      <article class="elements__card">
+        <button type="button" class="elements__delete" name="trash"></button>
+        <img class="elements__img" src="" alt="">
+        <div class="elements__group">
+          <h2 class="elements__name"></h2>
+          <button type="button" class="elements__icon" name="like"></button>
+        </div>
+      </article>
+    </li>
+  </template>
+  <script src="./scripts/cards.js"></script> 
   <script src="./scripts/index.js"></script> 
 </body>
 </html>
