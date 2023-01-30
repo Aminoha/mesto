@@ -25,6 +25,8 @@ const linkInput = formAddCard.querySelector('.popup__input_el_descr');
 const cardsElement = document.querySelector('.elements__items');
 const cardTemplate = document.querySelector('.card-template').content.querySelector('.elements__item');
 
+const popup = document.querySelector('.popup')
+const popupContainer = document.querySelector('.popup__container')
 
 function createCard(initialCards) {
   const card = cardTemplate.cloneNode(true);
@@ -95,10 +97,13 @@ editButton.addEventListener('click', function() {
   openPopup(popupEditProfile)
   nameInput.value = nameInfo.textContent;
   jobInput.value = jobInfo.textContent;
+  resetValidation(formProfile, validationConfig)
 })
 
 addButton.addEventListener('click', function() {
   openPopup(popupAddCard)
+  formAddCard.reset()
+  resetValidation(formAddCard, validationConfig)
 })
 
 popupCloseButtonEditPorfile.addEventListener('click', function() {
@@ -115,21 +120,17 @@ popupCloseButtonPic.addEventListener('click', function() {
 
 formProfile.addEventListener('submit', editProfileFormSubmit); 
 
-formAddCard.addEventListener('submit', addNewCardFormSubmit); 
+formAddCard.addEventListener('submit', addNewCardFormSubmit);
 
+document.addEventListener('keydown', function(evt) {
+  const popup = document.querySelector('.popup_opened')
+  if (evt.key === 'Escape' && popup) {
+    closePopup(popup)
+  }
+})
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+document.addEventListener('click', function(evt) {
+  if(evt.target.classList.contains('popup')) {
+    closePopup(evt.target)
+  }
+})

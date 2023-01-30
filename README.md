@@ -18,5 +18,7 @@
 10. popup
 11. transition
 12. Объекты
+13. Валидация форм
+14. keydown, click, 
 
 Страница проекта находится [здесь](https://aminoha.github.io/mesto/)

@@ -8,6 +8,7 @@
   position: absolute;
   top: 20px;
   right: 20px;
+  filter: drop-shadow(2px 4px 6px black);
 }
 
 .elements__delete:hover {
