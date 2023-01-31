@@ -25,7 +25,7 @@ const linkInput = formAddCard.querySelector('.popup__input_el_descr');
 const cardsElement = document.querySelector('.elements__items');
 const cardTemplate = document.querySelector('.card-template').content.querySelector('.elements__item');
 
-const popup = document.querySelector('.popup')
+const popups = document.querySelectorAll('.popup')
 const popupContainer = document.querySelector('.popup__container')
 
 function createCard(initialCards) {
@@ -68,10 +68,19 @@ renderCards()
 
 function openPopup(popups) {
   popups.classList.add('popup_opened');
+  document.addEventListener('keydown', closeByEscape)
 }
 
 function closePopup(popups) {
   popups.classList.remove('popup_opened');
+  document.removeEventListener('keydown', closeByEscape)
+}
+
+function closeByEscape(evt) {
+  if (evt.key === 'Escape') {
+    const openedPopup = document.querySelector('.popup_opened')
+    closePopup(openedPopup)
+  }
 }
 
 function editProfileFormSubmit (evt) {
@@ -93,6 +102,17 @@ function addNewCardFormSubmit (evt) {
   linkInput.value = ''
 }
 
+popups.forEach((popup) => {
+  popup.addEventListener('mousedown', (evt) => {
+      if (evt.target.classList.contains('popup_opened')) {
+          closePopup(popup)
+      }
+      if (evt.target.classList.contains('popup__button-close')) {
+        closePopup(popup)
+      }
+  })
+})
+
 editButton.addEventListener('click', function() {
   openPopup(popupEditProfile)
   nameInput.value = nameInfo.textContent;
@@ -106,31 +126,6 @@ addButton.addEventListener('click', function() {
   resetValidation(formAddCard, validationConfig)
 })
 
-popupCloseButtonEditPorfile.addEventListener('click', function() {
-  closePopup(popupEditProfile)
-})
-
-popupCloseButtonAddCard.addEventListener('click', function() {
-  closePopup(popupAddCard)
-})
-
-popupCloseButtonPic.addEventListener('click', function() {
-  closePopup(popupOpenPic)
-})
-
 formProfile.addEventListener('submit', editProfileFormSubmit); 
 
 formAddCard.addEventListener('submit', addNewCardFormSubmit);
-
-document.addEventListener('keydown', function(evt) {
-  const popup = document.querySelector('.popup_opened')
-  if (evt.key === 'Escape' && popup) {
-    closePopup(popup)
-  }
-})
-
-document.addEventListener('click', function(evt) {
-  if(evt.target.classList.contains('popup')) {
-    closePopup(evt.target)
-  }
-})
