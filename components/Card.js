@@ -1,7 +1,7 @@
 class Card {
   constructor(data, templateSelector, openNewPopup) {
     this._name = data.name;
-    this._image = data.link;
+    this._link = data.link;
     this._templateSelector = templateSelector;
     this._openNewPopup = openNewPopup;
   }
@@ -17,42 +17,30 @@ class Card {
 
   generateCard() {
     this._element = this._getTemplate();
-    this._setEventListeners();
+    this._cardImage = this._element.querySelector(".elements__img");
+    this._likeButton = this._element.querySelector(".elements__icon");
+    this._deleteButton = this._element.querySelector(".elements__delete");
     this._element.querySelector(".elements__name").textContent = this._name;
-    this._element.querySelector(".elements__img").src = this._image;
-    this._element.querySelector(".elements__img").alt = this._name;
+    this._cardImage.src = this._link;
+    this._cardImage.alt = this._name;
+    this._setEventListeners();
     return this._element;
   }
 
   _handleLikeClick() {
-    this._element
-      .querySelector(".elements__icon")
-      .classList.toggle("elements__icon_active");
+    this._likeButton.classList.toggle("elements__icon_active");
   }
 
   _handleCardRemove() {
-    this._element
-      .querySelector(".elements__img")
-      .closest(".elements__item")
-      .remove();
+    this._element.remove();
   }
 
   _setEventListeners() {
-    this._element
-      .querySelector(".elements__icon")
-      .addEventListener("click", () => {
-        this._handleLikeClick();
-      });
-    this._element
-      .querySelector(".elements__delete")
-      .addEventListener("click", () => {
-        this._handleCardRemove();
-      });
-    this._element
-      .querySelector(".elements__img")
-      .addEventListener("click", () => {
-        this._openNewPopup(this._image, this._name);
-      });
+    this._likeButton.addEventListener("click", () => this._handleLikeClick());
+
+    this._deleteButton.addEventListener("click", () => this._handleCardRemove());
+
+    this._cardImage.addEventListener("click", () => this._openNewPopup(this._link, this._name));
   }
 }
 

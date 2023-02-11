@@ -65,18 +65,14 @@ function editProfileFormSubmit(evt) {
 
 function addNewCardFormSubmit(evt) {
   evt.preventDefault();
-  const newCard = new Card(
+  const newCard = createCard(
     {
       name: cardNameInput.value,
       link: linkInput.value,
-    },
-    ".card-template",
-    openNewPopup
+    }
   );
-  cardsElement.prepend(newCard.generateCard());
+  cardsElement.prepend(newCard);
   closePopup(popupAddCard);
-  cardNameInput.value = "";
-  linkInput.value = "";
 }
 
 popups.forEach((popup) => {
@@ -108,7 +104,12 @@ formProfile.addEventListener("submit", editProfileFormSubmit);
 formAddCard.addEventListener("submit", addNewCardFormSubmit);
 
 initialCards.forEach((item) => {
+  const card = createCard(item)
+  cardsElement.append(card);
+});
+
+function createCard(item) {
   const card = new Card(item, ".card-template", openNewPopup);
   const cardElement = card.generateCard();
-  document.querySelector(".elements__items").append(cardElement);
-});
+  return cardElement
+}
