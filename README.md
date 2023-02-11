@@ -20,5 +20,8 @@
 12. Объекты
 13. Валидация форм
 14. keydown, click, 
+15. Class
+16. export/import
+17. Модули
 
 Страница проекта находится [здесь](https://aminoha.github.io/mesto/)
