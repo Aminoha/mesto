@@ -1,9 +1,9 @@
 class Card {
-  constructor(data, templateSelector, openNewPopup) {
+  constructor(data, templateSelector, handleCardClick) {
     this._name = data.name;
     this._link = data.link;
     this._templateSelector = templateSelector;
-    this._openNewPopup = openNewPopup;
+    this._handleCardClick = handleCardClick;
   }
 
   _getTemplate() {
@@ -40,7 +40,7 @@ class Card {
 
     this._deleteButton.addEventListener("click", () => this._handleCardRemove());
 
-    this._cardImage.addEventListener("click", () => this._openNewPopup(this._link, this._name));
+    this._cardImage.addEventListener("click", () => this._handleCardClick(this._link, this._name));
   }
 }
 

@@ -23,5 +23,8 @@
 15. Class
 16. export/import
 17. Модули
+18. ООП
+19. this
+20. Деструктуризация
 
 Страница проекта находится [здесь](https://aminoha.github.io/mesto/)
