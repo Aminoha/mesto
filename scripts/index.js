@@ -1,6 +1,7 @@
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
 import { validationConfig, initialCards } from "../components/config.js";
+import Section from "../components/Section.js";
 
 const editButton = document.querySelector(".profile__edit-button");
 const addButton = document.querySelector(".profile__add-button");
@@ -103,13 +104,25 @@ formProfile.addEventListener("submit", editProfileFormSubmit);
 
 formAddCard.addEventListener("submit", addNewCardFormSubmit);
 
-initialCards.forEach((item) => {
-  const card = createCard(item)
-  cardsElement.append(card);
-});
+// initialCards.forEach((item) => {
+//   const card = createCard(item)
+//   cardsElement.append(card);
+// });
+
+const cardSection = new Section({
+  items: initialCards,
+  renderer: (data) => {
+    console.log(data);
+    const cardElement = createCard(data)
+    cardSection.addItem(cardElement)
+  }, cardsElement
+})
 
 function createCard(item) {
   const card = new Card(item, ".card-template", openNewPopup);
   const cardElement = card.generateCard();
   return cardElement
 }
+
+//провести деструктуризацию классов/констракторов?
+
