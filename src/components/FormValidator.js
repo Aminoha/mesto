@@ -1,4 +1,4 @@
-class FormValidator {
+export default class FormValidator {
   constructor(config, formElement) {
     this._config = config;
     this._form = formElement;
@@ -60,5 +60,3 @@ class FormValidator {
   _hasInvalidInput = () =>
     this._inputList.some((inputElement) => !inputElement.validity.valid);
 }
-
-export default FormValidator;
