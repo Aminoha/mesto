@@ -30,13 +30,13 @@ export default class Api {
     }).then(this._getJson);
   }
 
-  updateUser({ name, description }) {
+  updateUser({ name, about }) {
     return fetch(`${this._path}/users/me`, {
       method: "PATCH",
       headers: this._getHeaders(),
       body: JSON.stringify({
         name: `${name}`,
-        about: `${description}`,
+        about: `${about}`,
       }),
     }).then(this._getJson);
   }

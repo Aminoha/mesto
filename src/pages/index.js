@@ -1,7 +1,7 @@
 import "./index.css";
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
-import validationConfig from "../components/config.js";
+import validationConfig from "../utils/constants";
 import Section from "../components/Section.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
@@ -16,8 +16,6 @@ const avatarButton = document.querySelector(".profile__pic-button");
 
 const popupEditProfile = document.querySelector(".popup_edit-profle");
 const formProfile = popupEditProfile.querySelector(".popup__form");
-const nameInput = formProfile.querySelector(".popup__input_el_name");
-const jobInput = formProfile.querySelector(".popup__input_el_descr");
 
 const popupAddCard = document.querySelector(".popup_add-card");
 const formAddCard = popupAddCard.querySelector(".popup__form");
@@ -44,7 +42,7 @@ const handleAvatarFormUpdate = (pic) => {
   return api
     .updateAvatar(pic)
     .then((items) => {
-      UserProfile.setUserAvatar(items);
+      userProfile.setUserAvatar(items);
     })
     .catch((err) => {
       console.log(err);
@@ -109,13 +107,13 @@ const handleCardClick = (link, name) => {
 };
 
 const callbackSubmitFormProfile = (data) => {
-  const dataProfile = UserProfile.getUserInfo();
-  nameInput.value = dataProfile.name;
-  jobInput.value = dataProfile.about;
+  const dataProfile = userProfile.getUserInfo();
+  popupProfileEdit.setInputValues(dataProfile)
+
   return api
     .updateUser(data)
     .then((items) => {
-      UserProfile.setUserInfo(items);
+      userProfile.setUserInfo(items);
     })
     .catch((err) => {
       console.log(err);
@@ -159,7 +157,7 @@ const popupUpdateAvatar = new PopupWithForm(
   handleAvatarFormUpdate
 );
 
-const UserProfile = new UserInfo({
+const userProfile = new UserInfo({
   userNameSelector: ".profile__name",
   userDescrSelector: ".profile__about",
   userPicSelector: ".profile__pic",
@@ -173,8 +171,8 @@ Promise.all([api.getCards(), api.getUsers()])
   .then(([items, user]) => {
     currentUserId = user._id;
     cardSection.renderItems(items);
-    UserProfile.setUserAvatar(user);
-    UserProfile.setUserInfo(user);
+    userProfile.setUserAvatar(user);
+    userProfile.setUserInfo(user);
   })
   .catch((err) => {
     console.log(err);
@@ -182,9 +180,8 @@ Promise.all([api.getCards(), api.getUsers()])
 
 //Слушатели
 editButton.addEventListener("click", () => {
-  const dataProfile = UserProfile.getUserInfo();
-  nameInput.value = dataProfile.name;
-  jobInput.value = dataProfile.about;
+  const dataProfile = userProfile.getUserInfo();
+  popupProfileEdit.setInputValues(dataProfile)
   formProfileValidation.resetValidation();
   popupProfileEdit.open();
 });
